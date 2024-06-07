@@ -123,7 +123,6 @@ li:hover {
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
 }
 .gallery {
 	width: 100%;
@@ -139,7 +138,7 @@ li:hover {
 }
 #contact {
 	width: 50%;
-margin: auto;
+	margin: auto;
 }
 #contact > * {
 	text-align: center;
@@ -155,8 +154,8 @@ margin: auto;
 	flex-direction: column;
 }
 
-#contact input {
-	height: 50px;
+input {
+	height: 40px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
@@ -174,10 +173,10 @@ input[type="submit"]{
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em auto ;
-	width: 180px;
+	margin : 2em auto;
+	padding: 0px 60px 0px 60px;
 	text-align: center;
-	border-radius: 60px ;
+	border-radius: 60px;
 }
 
 footer nav ul {
@@ -186,3 +185,51 @@ footer nav ul {
 	margin: 2em
 }
 
+/***** filtre *****/
+
+.filter {
+	display: flex;
+	justify-content: center;
+	margin-top: 2rem;
+}
+
+.filter-button {
+	margin: 0 0.5rem 0 0.5rem;
+	padding: 7px 25px;
+	background-color: white;
+	color: #1D6154;
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 1.1rem;
+	border: #1D6154 solid 1px;
+	border-radius: 37px;
+	cursor: pointer;
+}
+
+.active-filter {
+	background-color: #1D6154;
+	color: white;
+}
+
+.gallery {
+	margin-top: 2rem;
+}
+
+#titleProjects {
+	display:flex;
+	justify-content: center;
+	gap: 20px;
+}
+
+#titleProjects h2 {
+	margin: 0;
+}
+
+#titleProjects button {
+	border: none;
+	background-color: white;
+	cursor: pointer;
+	font-size: 0.9rem;
+	font-weight: 500;
+	font-family: 'Work Sans';
+}

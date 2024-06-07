@@ -1,9 +1,8 @@
-# Portfolio-architecte-sophie-bluel
+=> Cloner le Projet contenant le Back-End & le Front-End
 
-Code du projet 6 d'intégrateur web.
+=> Se rendre dans le fichier Back-End et suivre le READ ME pour lancer le serveur Back-end:
+-Lancer le terminal depuis le fichier Back
+-Installer les dépendances : npm i
+-Lancer le serveur Back-end : npm start
 
-## Information pour le lancer le code
-
- - Lancer le backend depuis votre terminal en suivant les instruction du fichier ReadMe.
- - Si vous désirez afficher le code du backend et du frontend, faites le dans 2 instances de VSCode différentes pour éviter tout problème
-# sophiebluel
+=> Se rendre dans le fichier Front-End et LiverServer ou ouverture du fichier index.html
