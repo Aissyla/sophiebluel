@@ -46,17 +46,23 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+a {
+	text-decoration: none;
+}
 /** end reset css**/
 body {
-	max-width: 1140px;
-	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	max-width: 1140px;
+	margin:50px auto;
+}
+main{
+	max-width: 1140px;
+	margin:auto;
 }
 section {
 	margin: 50px 0
@@ -68,7 +74,7 @@ h1{
 	font-family: 'Syne';
 	font-size: 22px;
 	font-weight: 800;
-	color: #B1663C
+	color: #B1663C;
 }
 
 h1 > span {
@@ -95,8 +101,17 @@ nav li {
 	font-size: 1.2em;
 }
 
-li:hover {
-	color: #B1663C;
+nav li a {
+	color: black;
+	cursor: pointer;
+}
+
+nav li img {
+	width: 19.35px;
+}
+
+li a:hover {
+	font-weight: bold;
 }
 #introduction {
 	display: flex;
@@ -232,4 +247,74 @@ footer nav ul {
 	font-size: 0.9rem;
 	font-weight: 500;
 	font-family: 'Work Sans';
+}
+
+/***** login *****/
+
+.user-login-form {
+	font-size: 14px;
+	font-weight: bold;
+}
+.user-login-form form {
+	display:flex;
+	flex-direction: column;
+	margin: auto;
+	width: 80%;
+}
+
+.user-login-form {
+	width: 50%;
+	margin: auto;
+	padding: 5rem;
+}
+
+.user-login-form h2 {
+	display: flex;
+	justify-content: center;
+}
+
+.user-login-form input {
+	border: none;
+	outline: none;
+	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+	height: 51px;
+}
+
+.user-login-form label {
+	margin: 3rem 0 10px 0;
+	color: #3D3D3D;
+}
+
+.user-login-form a {
+	color: #3d3d3d;
+	margin: auto;
+	border-bottom: 1px solid#3D3D3D;
+}
+
+.error-message {
+	display: none; /* Initialement caché */
+	background-color: rgb(252, 62, 62);
+	color: white;
+	padding: 20px;
+	margin: 20px;
+}
+
+.logout{
+	display: none; /* Initialement caché */
+}
+
+.mode-edition{
+	display: none; /* Initialement caché */
+	justify-content: center;
+	background-color: black;
+	color: white;
+	padding: 20px;
+}
+
+.mode-edition i{
+	font-weight: normal;
+}
+
+.mode-edition p{
+	margin-left: 10px;
 }
