@@ -4,6 +4,49 @@ document.addEventListener("DOMContentLoaded", function() {
     const loginLink = document.getElementById("login");
     const logoutLink = document.getElementById("logout");
     const modeEditionElement = document.querySelector(".mode-edition");
+    const editButtonContainer = document.getElementById("titleProjects");
+
+    function editButton() {
+        if (editButtonContainer) {
+            const existingButton = document.getElementById("editButton");
+            if (!existingButton) {
+                const divEditButton = document.createElement("button");
+                divEditButton.id = "editButton";
+                divEditButton.innerHTML = `<span><i class="fa-regular fa-pen-to-square"></i> modifier</span>`;
+                editButtonContainer.appendChild(divEditButton);
+
+                divEditButton.onclick = function() {
+                    let modal = document.getElementById("myModal") || createModal();
+                    modal.style.display = "block";
+                    fetchProjects(displayProjectsModal);
+                    fetchCategoriesModal();
+                };
+            }
+        }
+    }
+
+    function removeEditButton() {
+        if (editButtonContainer) {
+            const existingButton = document.getElementById("editButton");
+            if (existingButton) {
+                existingButton.remove();
+            }
+        }
+    }
+
+    if (localStorage.getItem('token') && localStorage.getItem('userId')) {
+        editButton();
+        const logoutButton = document.getElementById("log");
+        if (logoutButton) {
+            logoutButton.textContent = "logout";
+            logoutButton.href = "#";
+            logoutButton.onclick = function() {
+                localStorage.removeItem('token');
+                localStorage.removeItem('userId');
+                window.location.href = "login.html";
+            };
+        }
+    }
 
     if (loginForm) {
         loginForm.addEventListener("submit", function(event) {
@@ -46,6 +89,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     if (modeEditionElement) modeEditionElement.style.display = "flex";
                     if (errorMessageElement) errorMessageElement.style.display = "none";
 
+                    editButton();
+
                     window.location.href = "index.html";
                 } else {
                     if (errorMessageElement) {
@@ -69,19 +114,26 @@ document.addEventListener("DOMContentLoaded", function() {
             event.preventDefault();
             localStorage.removeItem('token');
             localStorage.removeItem('userId');
+
+            if (loginLink) loginLink.style.display = "block";
+            if (logoutLink) logoutLink.style.display = "none";
+            if (modeEditionElement) modeEditionElement.style.display = "none";
+            
+            removeEditButton();
+
             window.location.href = "login.html";
         });
     }
 
-    // Vérifiez si l'utilisateur est connecté au chargement de la page
     if (localStorage.getItem('token') && localStorage.getItem('userId')) {
         if (loginLink) loginLink.style.display = "none";
         if (logoutLink) logoutLink.style.display = "block";
         if (modeEditionElement) modeEditionElement.style.display = "flex";
+        
+        editButton();
     } else {
         if (loginLink) loginLink.style.display = "block";
         if (logoutLink) logoutLink.style.display = "none";
         if (modeEditionElement) modeEditionElement.style.display = "none";
     }
 });
-
