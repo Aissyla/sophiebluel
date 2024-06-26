@@ -401,20 +401,12 @@ footer nav ul {
     color: #aaa;
     float: right;
     font-size: 22px;
-    font-weight: bold;
-	position: absolute;
-	top: 10px;
-	right: 10px;
 }
 
 .back {
 	color: #aaa;
     float: left;
     font-size: 22px;
-    font-weight: bold;
-	position: absolute;
-	top: 10px;
-	left: 10px;
 }
 
 .close:hover,
@@ -475,7 +467,7 @@ footer nav ul {
 }
 
 #add-project-button-modal {
-	background-color: #1D6154;
+	background-color: #A7A7A7;
 	border-radius: 20px;
 	padding: 10px 50px 10px 50px;
 	margin-bottom: 20px;
@@ -485,6 +477,10 @@ footer nav ul {
 	justify-content: center;
 	font-family: 'Syne';
 	cursor: pointer;
+}
+
+#add-project-button-modal:hover{
+	background-color: #1D6154;
 }
 
 /** ajouter une photo **/
@@ -512,7 +508,7 @@ footer nav ul {
 }
 
 .modal-new-image i {
-	font-size: 60px;
+	font-size: 76px;
 	color: #B9C5CC;
 	padding-bottom: 15px;
 }
@@ -524,10 +520,6 @@ footer nav ul {
 	border-radius: 50px;
 	opacity: 0;
 	cursor: pointer;
-}
-
-.modal-new-image p {
-	margin-top: 15px;
 }
 
 .modal-new-category {
@@ -566,4 +558,8 @@ footer nav ul {
 	width: 200px;
 	font-size: 1rem;
 	cursor: pointer;
+}
+
+#submit-new-work:hover{
+	background-color: #1D6154;
 }

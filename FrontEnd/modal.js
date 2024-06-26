@@ -51,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function() {
         modal.appendChild(modalContent);
         document.body.appendChild(modal);
 
-        // Modale pour l'ajout de projet
         let modalAddProjectContent = document.createElement("div");
         modalAddProjectContent.className = "modal-add-project-content";
         modalAddProjectContent.style.display = "none";
@@ -79,6 +78,15 @@ document.addEventListener("DOMContentLoaded", function() {
         <label id="new-image">+ Ajouter photo</label>
         <input id="form-image" type="file" name="image" accept="image/*, .jpg, .jpeg, .png" required>
         <p id="photo-size">jpg, png : 4mo max</p>`;
+
+        let imagePreview = document.createElement("img");
+        imagePreview.id = "image-preview";
+        imagePreview.style.display = "none";
+        imagePreview.style.width = "129px";
+        imagePreview.style.height = "193px";
+        imagePreview.alt = "Aperçu de l'image";
+
+        newImg.insertBefore(imagePreview, newImg.firstChild);
 
         let newCategory = document.createElement("div");
         newCategory.className = "modal-new-category";
@@ -147,6 +155,33 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         };
 
+        const imageInput = document.getElementById('form-image');
+        imageInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                    document.getElementById('photo-add-icon').style.display = 'none';
+                    document.getElementById('new-image').style.display = 'none';
+                    document.getElementById('photo-size').style.display = 'none';
+                    document.getElementById('form-image').style.display = 'none';
+
+                    let modalNewImage = document.getElementsByClassName("modal-new-image")[0];
+                    modalNewImage.style.padding = "0px";
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                imagePreview.style.display = 'none';
+                document.getElementById('photo-add-icon').style.display = 'block';
+                document.getElementById('new-image').style.display = 'block';
+            }
+        });
+ 
         return modal;
     }
 
