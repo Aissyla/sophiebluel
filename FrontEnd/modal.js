@@ -1,3 +1,4 @@
+// Fonction pour récupérer les catégories et les ajouter au modal
 function fetchCategoriesModal() {
     fetch('http://localhost:5678/api/categories')
         .then(response => response.json())
@@ -17,7 +18,10 @@ function fetchCategoriesModal() {
         });
 }
 
+// Écouteur d'événement pour le chargement du DOM
 document.addEventListener("DOMContentLoaded", function() {
+
+    // Fonction pour créer le modal
     function createModal() {
         let modal = document.createElement("div");
         modal.id = "myModal";
@@ -43,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
         addProjectBtnModal.id = "add-project-button-modal";
         addProjectBtnModal.innerHTML = "Ajouter une photo";
 
+        // Ajoute les éléments au modal
         modalContent.appendChild(closeBtn);
         modalContent.appendChild(modalHeader);
         modalContent.appendChild(modalContentProjects);
@@ -99,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <hr class="border-bottom">
         <input type="submit" id="submit-new-work" value="Valider">`;
 
+        // Ajoute les éléments au formulaire du modal
         modalAddProjectForm.appendChild(newImg);
         modalAddProjectForm.appendChild(newCategory);
         modalAddProjectIcon.appendChild(modalAddProjectIconBack);
@@ -110,11 +116,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
         document.body.appendChild(modal);
 
+        // Événement sur le bouton de validation du formulaire
         document.getElementById("submit-new-work").addEventListener("click", function (event) {
             event.preventDefault();
             addProject();
         });
  
+        // Gestion de la fermeture du modal
         closeBtn.onclick = function () {
             modal.style.display = "none";
             modalAddProjectContent.style.display = "none";
@@ -155,6 +163,27 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         };
 
+        // Fonction pour vérifier si tous les champs sont remplis
+        function checkFormFields() {
+            const title = document.getElementById("form-title").value;
+            const category = document.getElementById("form-category").value;
+            const image = document.getElementById("form-image").files.length > 0;
+            
+            const submitButton = document.getElementById("submit-new-work");
+
+            if (title && category && image) {
+                submitButton.style.pointerEvents = "auto";
+            } else {
+                submitButton.style.pointerEvents = "none";
+            }
+        }
+
+        // Écouteurs d'événements pour les champs du formulaire
+        document.getElementById("form-title").addEventListener("input", checkFormFields);
+        document.getElementById("form-category").addEventListener("change", checkFormFields);
+        document.getElementById("form-image").addEventListener("change", checkFormFields);
+
+        // Gestion de l'aperçu de l'image ajoutée
         const imageInput = document.getElementById('form-image');
         imageInput.addEventListener('change', function(event) {
             const file = event.target.files[0];
@@ -180,11 +209,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById('photo-add-icon').style.display = 'block';
                 document.getElementById('new-image').style.display = 'block';
             }
+            checkFormFields();
         });
  
         return modal;
     }
 
+    // Fonction pour récupérer les projets et les afficher dans le modal
     function fetchProjects(callback) {
         fetch('http://localhost:5678/api/works')
             .then(response => response.json())
@@ -196,6 +227,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     }
 
+    // Fonction pour afficher les projets dans le modal
     function displayProjectsModal(projects) {
         const projectsContainer = document.getElementById("modalProjectsContainer");
         projectsContainer.innerHTML = "";
@@ -215,6 +247,7 @@ document.addEventListener("DOMContentLoaded", function() {
             
             deleteIcon.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
 
+            // Ajoute l'événement de suppression de projet
             deleteIcon.addEventListener("click", function() {
                 deleteProject(project.id, projectElement);
             });
@@ -225,6 +258,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Fonction pour supprimer un projet
     async function deleteProject(projectId, projectElement) {
         try {
             const response = await fetch(`http://localhost:5678/api/works/${projectId}`, {
@@ -246,6 +280,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    // Fonction pour ajouter un projet
     async function addProject() {
         const title = document.getElementById("form-title").value;
         const category = document.getElementById("form-category").value;
@@ -287,6 +322,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    // Si le bouton d'édition existe, ajoute un événement de clic qui affiche le modal (le crée s'il n'existe pas),
+    // charge et affiche les projets existants et récupère les catégories pour le formulaire du modal.
     const editButton = document.getElementById("editButton");
     if (editButton) {
         editButton.addEventListener("click", function () {
@@ -297,6 +334,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Rend les fonctions accessibles globalement pour un usage externe
     window.createModal = createModal;
     window.fetchCategoriesModal = fetchCategoriesModal;
     window.displayProjectsModal = displayProjectsModal;

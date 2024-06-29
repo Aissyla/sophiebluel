@@ -3,9 +3,12 @@ document.addEventListener("DOMContentLoaded", function() {
     const errorMessageElement = document.getElementById("error-message");
     const loginLink = document.getElementById("login");
     const logoutLink = document.getElementById("logout");
+    const titleProjects = document.getElementById("titleProjects");
+    const filterButtons = document.querySelector(".filter");
     const modeEditionElement = document.querySelector(".mode-edition");
     const editButtonContainer = document.getElementById("titleProjects");
 
+    // Fonction pour ajouter le bouton d'édition
     function editButton() {
         if (editButtonContainer) {
             const existingButton = document.getElementById("editButton");
@@ -25,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    // Fonction pour supprimer le bouton d'édition
     function removeEditButton() {
         if (editButtonContainer) {
             const existingButton = document.getElementById("editButton");
@@ -34,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    // Vérifie si l'utilisateur est connecté
     if (localStorage.getItem('token') && localStorage.getItem('userId')) {
         editButton();
         const logoutButton = document.getElementById("log");
@@ -48,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    // Gestion du formulaire de connexion
     if (loginForm) {
         loginForm.addEventListener("submit", function(event) {
             event.preventDefault();
@@ -84,11 +90,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('userId', data.userId);
 
-                    if (loginLink) loginLink.style.display = "none";
-                    if (logoutLink) logoutLink.style.display = "block";
-                    if (modeEditionElement) modeEditionElement.style.display = "flex";
-                    if (errorMessageElement) errorMessageElement.style.display = "none";
-
                     editButton();
 
                     window.location.href = "index.html";
@@ -109,6 +110,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Gestion du lien de déconnexion
     if (logoutLink) {
         logoutLink.addEventListener("click", function(event) {
             event.preventDefault();
@@ -118,6 +120,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (loginLink) loginLink.style.display = "block";
             if (logoutLink) logoutLink.style.display = "none";
             if (modeEditionElement) modeEditionElement.style.display = "none";
+            if (filterButtons) filterButtons.style.display = "flex";
             
             removeEditButton();
 
@@ -125,15 +128,19 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Vérifie si l'utilisateur est connecté au chargement de la page
     if (localStorage.getItem('token') && localStorage.getItem('userId')) {
         if (loginLink) loginLink.style.display = "none";
         if (logoutLink) logoutLink.style.display = "block";
         if (modeEditionElement) modeEditionElement.style.display = "flex";
+        if (filterButtons) filterButtons.style.display = "none";
+        if (titleProjects) titleProjects.style.marginBottom = "100px";
         
         editButton();
     } else {
         if (loginLink) loginLink.style.display = "block";
         if (logoutLink) logoutLink.style.display = "none";
         if (modeEditionElement) modeEditionElement.style.display = "none";
+        if (filterButtons) filterButtons.style.display = "flex";
     }
 });
