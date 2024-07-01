@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const titleProjects = document.getElementById("titleProjects");
     const filterButtons = document.querySelector(".filter");
     const modeEditionElement = document.querySelector(".mode-edition");
+    const header = document.querySelector("header");
     const editButtonContainer = document.getElementById("titleProjects");
 
     // Fonction pour ajouter le bouton d'édition
@@ -141,6 +142,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (loginLink) loginLink.style.display = "block";
         if (logoutLink) logoutLink.style.display = "none";
         if (modeEditionElement) modeEditionElement.style.display = "none";
+        if (header) header.style.paddingTop = "50px";
         if (filterButtons) filterButtons.style.display = "flex";
     }
 });

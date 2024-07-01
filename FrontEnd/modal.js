@@ -270,7 +270,6 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log(`Projet avec l'ID: ${projectId} supprimé`);
             projectElement.remove();
 
-            fetchProjects(displayProjectsModal)
         } catch (error) {
             console.error('Erreur:', error);
         }
@@ -309,10 +308,8 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("form-title").value = '';
             document.getElementById("form-category").value = '';
             document.getElementById("form-image").value = '';
-
             document.getElementById("myModal").style.display = "none";
 
-            fetchProjects(displayProjectsModal);
         } catch (error) {
             console.error('Erreur:', error);
         }
