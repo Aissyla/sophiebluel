@@ -58,7 +58,8 @@ header {
 	display: flex;
 	justify-content: space-between;
 	max-width: 1140px;
-	margin:50px auto;
+	margin: auto;
+    padding-top: 100px;
 }
 main{
 	max-width: 1140px;
@@ -315,6 +316,8 @@ footer nav ul {
 }
 
 .mode-edition{
+	position: fixed;
+	width: 100%;
 	display: none; /* Initialement caché */
 	justify-content: center;
 	background-color: black;
