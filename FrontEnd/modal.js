@@ -157,12 +157,6 @@ document.addEventListener("DOMContentLoaded", function() {
             modal.style.display = "none";
         };
 
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        };
-
         // Fonction pour vérifier si tous les champs sont remplis
         function checkFormFields() {
             const title = document.getElementById("form-title").value;
@@ -275,6 +269,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
             console.log(`Projet avec l'ID: ${projectId} supprimé`);
             projectElement.remove();
+
+            fetchProjects(displayProjectsModal)
         } catch (error) {
             console.error('Erreur:', error);
         }
@@ -316,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             document.getElementById("myModal").style.display = "none";
 
-            fetchProjects();
+            fetchProjects(displayProjectsModal);
         } catch (error) {
             console.error('Erreur:', error);
         }

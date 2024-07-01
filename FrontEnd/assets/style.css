@@ -185,6 +185,14 @@ input {
 	outline: none;
 }
 
+.ok-message {
+	display: none; /* Initialement caché */
+	background-color: rgb(62, 252, 109);
+	color: white;
+	padding: 20px;
+	margin: 20px;
+}
+
 input[type="submit"]{
 	font-family: 'Syne';
 	font-weight: 700;
@@ -450,18 +458,17 @@ footer nav ul {
 }
 
 #modalProjectsContainer {
-	display: flex;
-	flex-wrap: wrap;
+	display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	justify-content: space-between;
 	margin: 40px 80px 30px 80px;
-	gap: 30px 10px;
+	gap: 25px 1px;
 	border-bottom: solid 2px #B3B3B3;
-	padding-bottom: 50px;
+	padding-bottom: 80px;
 }
 
 .modal .projects {
 	width: calc(20% - 20px);
-    margin-bottom: 20px; 
 }
 
 .add-button-modal-container {

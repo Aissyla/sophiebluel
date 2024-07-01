@@ -88,3 +88,16 @@ function toggleActiveFilter(activeButton) {
 // Appel des fonctions pour récupérer les projets et les catégories
 fetchProjects();
 fetchCategories();
+
+// Afficher le message de confirmation lors de la soumission du formulaire
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Empêche la soumission du formulaire
+  
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+
+  if (name && email && message) {
+      document.getElementById('ok-message').style.display = 'block';
+  }
+});
