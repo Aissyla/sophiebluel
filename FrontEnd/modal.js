@@ -305,10 +305,21 @@ document.addEventListener("DOMContentLoaded", function() {
                 throw new Error('Erreur lors de l\'ajout du projet');
             }
 
-            document.getElementById("form-title").value = '';
-            document.getElementById("form-category").value = '';
-            document.getElementById("form-image").value = '';
-            document.getElementById("myModal").style.display = "none";
+        // Réinitialiser le formulaire
+        document.getElementById("form-title").value = '';
+        document.getElementById("form-category").value = '';
+        document.getElementById("form-image").value = '';
+        
+        // Réinitialiser l'aperçu de l'image
+        document.getElementById("image-preview").style.display = 'none';
+        document.getElementById('photo-add-icon').style.display = 'block';
+        document.getElementById('new-image').style.display = 'block';
+        document.getElementById('photo-size').style.display = 'block';
+        document.getElementById('form-image').style.display = 'block';
+        document.getElementsByClassName("modal-new-image")[0].style.padding = "20px";
+
+        // Fermer la modal
+        document.getElementById("myModal").style.display = "none";
 
         } catch (error) {
             console.error('Erreur:', error);
