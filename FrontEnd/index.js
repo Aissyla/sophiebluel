@@ -99,5 +99,6 @@ document.getElementById('contact-form').addEventListener('submit', function(even
 
   if (name && email && message) {
       document.getElementById('ok-message').style.display = 'block';
+      document.getElementById('contact-form').reset();
   }
 });

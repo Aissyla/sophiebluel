@@ -188,7 +188,7 @@ input {
 
 .ok-message {
 	display: none; /* Initialement caché */
-	background-color: rgb(62, 252, 109);
+	background-color: #1D6154;
 	color: white;
 	padding: 20px;
 	margin: 20px;
@@ -305,7 +305,7 @@ footer nav ul {
 
 .error-message {
 	display: none; /* Initialement caché */
-	background-color: rgb(252, 62, 62);
+	background-color: #B1663C;
 	color: white;
 	padding: 20px;
 	margin: 20px;
@@ -396,7 +396,7 @@ footer nav ul {
     background-color: #fefefe;
     margin: 15% auto;
     padding: 30px;
-    width: 630px;
+    width: 600px;
 	border-radius: 10px;
 	position: relative;
 }
