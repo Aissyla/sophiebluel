@@ -2,7 +2,7 @@ const projectsUrl = "http://localhost:5678/api/works";
 const categoriesUrl = "http://localhost:5678/api/categories";
 
 // Fonction pour récupérer les projets depuis l'API
-function fetchProjects() {
+export function fetchProjects() {
   fetch(projectsUrl)
     .then(response => response.ok ? response.json() : Promise.reject('Erreur lors de la récupération des données des projets'))
     .then(data => displayProjects(data))
@@ -102,3 +102,4 @@ document.getElementById('contact-form').addEventListener('submit', function(even
       document.getElementById('contact-form').reset();
   }
 });
+

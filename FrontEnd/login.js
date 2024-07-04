@@ -18,13 +18,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 divEditButton.id = "editButton";
                 divEditButton.innerHTML = `<span><i class="fa-regular fa-pen-to-square"></i> modifier</span>`;
                 editButtonContainer.appendChild(divEditButton);
-
-                divEditButton.onclick = function() {
-                    let modal = document.getElementById("myModal") || createModal();
-                    modal.style.display = "block";
-                    fetchProjects(displayProjectsModal);
-                    fetchCategoriesModal();
-                };
             }
         }
     }

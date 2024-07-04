@@ -1,3 +1,5 @@
+import { fetchProjects } from "./index.js";
+
 // Fonction pour récupérer les catégories et les ajouter au modal
 function fetchCategoriesModal() {
     fetch('http://localhost:5678/api/categories')
@@ -210,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Fonction pour récupérer les projets et les afficher dans le modal
-    function fetchProjects(callback) {
+    function fetchProjectsModal(callback) {
         fetch('http://localhost:5678/api/works')
             .then(response => response.json())
             .then(data => {
@@ -270,6 +272,8 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log(`Projet avec l'ID: ${projectId} supprimé`);
             projectElement.remove();
 
+            fetchProjects();
+
         } catch (error) {
             console.error('Erreur:', error);
         }
@@ -321,6 +325,8 @@ document.addEventListener("DOMContentLoaded", function() {
         // Fermer la modal
         document.getElementById("myModal").style.display = "none";
 
+        fetchProjects();
+
         } catch (error) {
             console.error('Erreur:', error);
         }
@@ -333,7 +339,7 @@ document.addEventListener("DOMContentLoaded", function() {
         editButton.addEventListener("click", function () {
             let modal = document.getElementById("myModal") || createModal();
             modal.style.display = "block";
-            fetchProjects(displayProjectsModal);
+            fetchProjectsModal(displayProjectsModal);
             fetchCategoriesModal();
         });
     }
