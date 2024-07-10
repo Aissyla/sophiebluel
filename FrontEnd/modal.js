@@ -339,6 +339,8 @@ document.addEventListener("DOMContentLoaded", function() {
         editButton.addEventListener("click", function () {
             let modal = document.getElementById("myModal") || createModal();
             modal.style.display = "block";
+            document.querySelector(".modal-content").style.display = "block";  // Afficher la galerie
+            document.querySelector(".modal-add-project-content").style.display = "none";  // Cacher l'ajout de projet
             fetchProjectsModal(displayProjectsModal);
             fetchCategoriesModal();
         });
